@@ -2,7 +2,7 @@
 
 This README would normally document whatever steps are necessary to get your application up and running.
 
-### What is this repository for? ###
+### The details ###
 
 * Quick summary
 Chess in Java. Nothing else to say
@@ -10,7 +10,7 @@ Chess in Java. Nothing else to say
 1.0
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
-### How do I get set up? ###
+### More stuff i cbs filling ###
 
 * Summary of set up
 * Configuration
@@ -19,7 +19,7 @@ Chess in Java. Nothing else to say
 * How to run tests
 * Deployment instructions
 
-### Contribution guidelines ###
+//### Contribution guidelines ###
 
 * Writing tests
 * Code review
