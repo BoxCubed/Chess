@@ -8,6 +8,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Circle;
 
 public class ChessGame extends BasicGame
 {
@@ -16,6 +17,7 @@ public class ChessGame extends BasicGame
 	Image bg;
 	Scanner i=new Scanner(System.in);
 	Board b;
+	Circle mouseball;
 	public ChessGame(String gamename)
 	{
 		super(gamename);
@@ -27,13 +29,18 @@ public class ChessGame extends BasicGame
 		//gc.getGraphics().setBackground(Color.orange);
 		bg=new Image("res/board.png");
 		b=new Board();
+		mouseball=new Circle(gc.getInput().getMouseX(), gc.getInput().getMouseY(), 1);
 	}
 
 	@Override
 	public void update(GameContainer gc, int delta) throws SlickException {//delta is time the last update was called. measured in ms 
 		                                                                   //if called 10 times a second, its 100ms
 		//gc.getGraphics().setBackground(Color.orange);
+		mouseball.setCenterX(gc.getInput().getMouseX());
+		mouseball.setCenterY(gc.getInput().getMouseY());
+		b.update(gc,mouseball);
 		this.delta=delta;
+		
 		
 		
 	}
@@ -44,7 +51,7 @@ public class ChessGame extends BasicGame
 		g.setColor(Color.black);
 		
 		bg.draw(0, 0, gc.getWidth(), gc.getHeight());
-		b.render(g);
+		b.render(gc);
 		g.drawString("x: "+gc.getInput().getMouseX(), gc.getInput().getMouseX()-20, gc.getInput().getMouseY()+10);
 		g.drawString("y: "+gc.getInput().getMouseY(), gc.getInput().getMouseX()-20,gc.getInput().getMouseY()+25);
 		

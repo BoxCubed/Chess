@@ -1,41 +1,40 @@
 package chess.Game;
 
-import org.newdawn.slick.Graphics;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.geom.Circle;
 
 public class Board {
 	int Widt=64;
 	int Height=64;
-	
+	Square[][] grid=new Square[8][8];
 	/**
 	 * 4 digit array, first 2 is grid start, next two is grid finish
 	 */
-	static int[] secoord={50,60,649,654};
-	static int cellw=(secoord[2]-secoord[0])/8;
-	static int cellh=(secoord[3]-secoord[1])/8;
+	int[] secoord={50,60,649,654};
+	int cellw=(secoord[2]-secoord[0])/8;
+	int cellh=(secoord[3]-secoord[1])/8;
 
 	public Board(){
-	System.out.println("Cell:w/h "+cellw+" "+cellh);
+		secoord[0]+=2;
+		cellw+=1;
 	
-	/*secoord[0]=52;
-	secoord[1]=59;
-	cellh-=2;*/
-	cellw+=1;
-	getcoords('h', 7);
-	}
-	public void render(Graphics g){
-    
 		for(int w=0;w<8;w++)
 			for(int h=0;h<8;h++){//97 is a 98 is b and so on
 		        
-				g.drawRect(getcoords(w, h)[0], getcoords(w, h)[1], cellw, cellh);
+				
+				grid[w][h]=new Square(w, h, this);
 			}
-			
-			
-			//g.draw(new org.newdawn.slick.geom.Rectangle(i+, y, width, height));
-			//System.out.println(i);
-		
-		
+	
+	
+	System.out.println("Cell:w/h "+cellw+" "+cellh);
 	}
+	public void render(GameContainer g){
+    
+		for(int w=0;w<8;w++)
+			for(int h=0;h<8;h++){//97 is a 98 is b and so on
+		        grid[w][h].render(g);
+			}
+			}
 	/**
 	 * Returns coord values on the board image the given coords represent.
 	 * like a1 would give 50,60
@@ -64,6 +63,16 @@ if(w>7||h>7)return null;
 		
 		int[] ret={secoord[0]+w*cellw,secoord[1]+h*cellh};
 		return ret;
+	}
+	public void update(GameContainer gc,Circle c) {
+		for(int w=0;w<8;w++)
+			for(int h=0;h<8;h++){
+				if(c.intersects(grid[w][h]))
+					grid[w][h].selected=true;
+				else grid[w][h].selected=false;
+			}
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
