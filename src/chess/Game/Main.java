@@ -1,4 +1,4 @@
-package chess;
+package chess.Game;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

@@ -1,5 +1,5 @@
 
-package chess;
+package chess.Game;
 import java.util.Scanner;
 
 import org.newdawn.slick.BasicGame;
@@ -15,6 +15,7 @@ public class ChessGame extends BasicGame
 	int delta;
 	Image bg;
 	Scanner i=new Scanner(System.in);
+	Board b;
 	public ChessGame(String gamename)
 	{
 		super(gamename);
@@ -25,6 +26,7 @@ public class ChessGame extends BasicGame
 	public void init(GameContainer gc) throws SlickException {
 		//gc.getGraphics().setBackground(Color.orange);
 		bg=new Image("res/board.png");
+		b=new Board();
 	}
 
 	@Override
@@ -42,6 +44,7 @@ public class ChessGame extends BasicGame
 		g.setColor(Color.black);
 		
 		bg.draw(0, 0, gc.getWidth(), gc.getHeight());
+		b.render(g);
 		g.drawString("x: "+gc.getInput().getMouseX(), gc.getInput().getMouseX()-20, gc.getInput().getMouseY()+10);
 		g.drawString("y: "+gc.getInput().getMouseY(), gc.getInput().getMouseX()-20,gc.getInput().getMouseY()+25);
 		
