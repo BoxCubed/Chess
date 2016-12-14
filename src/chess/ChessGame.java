@@ -3,6 +3,7 @@ package chess;
 import java.util.Scanner;
 
 import org.newdawn.slick.BasicGame;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -38,7 +39,12 @@ public class ChessGame extends BasicGame
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException
 	{ 
+		g.setColor(Color.black);
+		
 		bg.draw(0, 0, gc.getWidth(), gc.getHeight());
+		g.drawString("x: "+gc.getInput().getMouseX(), gc.getInput().getMouseX()-20, gc.getInput().getMouseY()+10);
+		g.drawString("y: "+gc.getInput().getMouseY(), gc.getInput().getMouseX()-20,gc.getInput().getMouseY()+25);
+		
 		g.drawString("Chess", 100, 100);
 		g.drawString(""+delta, 20, 20);
 		
