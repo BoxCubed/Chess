@@ -8,7 +8,6 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.geom.Circle;
 
 public class ChessGame extends BasicGame
 {
@@ -17,7 +16,7 @@ public class ChessGame extends BasicGame
 	Image bg;
 	Scanner i=new Scanner(System.in);
 	Board b;
-	Circle mouseball;
+	
 	public ChessGame(String gamename)
 	{
 		super(gamename);
@@ -29,16 +28,15 @@ public class ChessGame extends BasicGame
 		//gc.getGraphics().setBackground(Color.orange);
 		bg=new Image("res/board.png");
 		b=new Board();
-		mouseball=new Circle(gc.getInput().getMouseX(), gc.getInput().getMouseY(), 1);
+		
 	}
 
 	@Override
 	public void update(GameContainer gc, int delta) throws SlickException {//delta is time the last update was called. measured in ms 
 		                                                                   //if called 10 times a second, its 100ms
 		//gc.getGraphics().setBackground(Color.orange);
-		mouseball.setCenterX(gc.getInput().getMouseX());
-		mouseball.setCenterY(gc.getInput().getMouseY());
-		b.update(gc,mouseball);
+	
+		b.update(gc);
 		this.delta=delta;
 		
 		
@@ -54,9 +52,11 @@ public class ChessGame extends BasicGame
 		b.render(gc);
 		g.drawString("x: "+gc.getInput().getMouseX(), gc.getInput().getMouseX()-20, gc.getInput().getMouseY()+10);
 		g.drawString("y: "+gc.getInput().getMouseY(), gc.getInput().getMouseX()-20,gc.getInput().getMouseY()+25);
+		g.drawString("FPS: "+gc.getFPS(), 20, 20);
+		if(b.getChosen()==null) return;
+		g.drawString("In Square: "+(char)(b.getChosen().getLoc()[0]+97)+" "+(b.getChosen().getLoc()[1]*-1+8/*used simple graph math to invert numbers so 0 becomes 8, 7 is 1 so on. 
+		equation is y=-x+8*/), 40, 0);
 		
-		g.drawString("Chess", 100, 100);
-		g.drawString(""+delta, 20, 20);
 		
 	
 	}

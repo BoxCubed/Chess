@@ -1,7 +1,6 @@
 package chess.Game;
 
 import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.geom.Circle;
 
 public class Board {
 	int Widt=64;
@@ -27,6 +26,18 @@ public class Board {
 	
 	
 	System.out.println("Cell:w/h "+cellw+" "+cellh);
+	
+	
+	}
+	
+	public void update(GameContainer gc) {
+		for(int w=0;w<8;w++)
+			for(int h=0;h<8;h++){
+				
+				grid[w][h].update(gc);
+			}
+		// TODO Auto-generated method stub
+		
 	}
 	public void render(GameContainer g){
     
@@ -52,10 +63,12 @@ public class Board {
 	}
 	/**
 	 * Returns coord values on the board image the given coords represent where 0,0 is a,1
+	 * This method is only practically useful when initialising the squares and should not be used. The squares extend rectangle
+	 * so that should be used instead
 	 * @see Board#getcoords(char, int)
 	 * @param w
 	 * @param h
-	 * @return coord values of iven grid numbers
+	 * @return array of coord values of given grid numbers
 	 */
     int[] getcoords(int w,int h){
 		//System.out.println();
@@ -64,15 +77,19 @@ if(w>7||h>7)return null;
 		int[] ret={secoord[0]+w*cellw,secoord[1]+h*cellh};
 		return ret;
 	}
-	public void update(GameContainer gc,Circle c) {
-		for(int w=0;w<8;w++)
-			for(int h=0;h<8;h++){
-				if(c.intersects(grid[w][h]))
-					grid[w][h].selected=true;
-				else grid[w][h].selected=false;
+    /**
+     * gets which square the mouse is in
+     * @return the square object
+     */
+    Square getChosen(){
+    	for(int w=0;w<8;w++)
+			for(int h=0;h<8;h++){//97 is a 98 is b and so on
+		        if(grid[w][h].selected) return grid[w][h];
+		        
 			}
-		// TODO Auto-generated method stub
-		
-	}
+    	return null;
+    	
+    }
+	
 	
 }
