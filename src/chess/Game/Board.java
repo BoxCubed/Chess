@@ -1,6 +1,10 @@
 package chess.Game;
 
 import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
+
+import chess.Pieces.TestPiece;
 
 public class Board {
 	int Widt=64;
@@ -12,18 +16,32 @@ public class Board {
 	int[] secoord={50,60,649,654};
 	int cellw=(secoord[2]-secoord[0])/8;
 	int cellh=(secoord[3]-secoord[1])/8;
+	Square selection=null;
 
 	public Board(){
 		secoord[0]+=2;
 		cellw+=1;
-	
+	boolean white=true;
+	int sw=0;
 		for(int w=0;w<8;w++)
 			for(int h=0;h<8;h++){//97 is a 98 is b and so on
 		        
+		      /*  if((w&1)==0)//if number is even. idk how this works but stack says it does
+		        {*/
+				if(sw==w){
+		        	grid[w][h]=new Square(w, h, this,white);
+		            white=!white;//simple toggle
+		            }else{
+		            	grid[w][h]=new Square(w, h, this,!white);
+		            	sw=w;
+		            	//white=!white;
+		            }
+		        
 				
-				grid[w][h]=new Square(w, h, this);
+				
 			}
-	
+	getSquare(5, 5).setPiece(new TestPiece(5, 5, this));
+	getSquare(6, 6).setPiece(new TestPiece(6, 6, this));
 	
 	System.out.println("Cell:w/h "+cellw+" "+cellh);
 	
@@ -31,21 +49,72 @@ public class Board {
 	}
 	
 	public void update(GameContainer gc) {
+		if(getClicked(gc)==selection&&selection!=null){selection=null; return;}
+		if(selection!=null&&getClicked(gc)!=null&&selection!=getClicked(gc)&&selection.getPiece()!=null&&selection.getPiece().canMove(getClicked(gc).getLoc()[0], getClicked(gc).getLoc()[1])){
+			selection.getPiece().move(getClicked(gc).getLoc()[0],getClicked(gc).getLoc()[1]);
+			System.out.println("Been here");
+			selection=null;
+			return;
+		}
 		for(int w=0;w<8;w++)
 			for(int h=0;h<8;h++){
+				Square s=grid[w][h];
+				
 				
 				grid[w][h].update(gc);
+				if(getClicked(gc)==s){
+					selection=s;
+				s.selected=true;}
+				else {s.selected=false;
+				
+				}
+				
+				//else if(selection==grid[w][h]) return;
+				
+				//selection=grid[w][h];
+					
 			}
 		// TODO Auto-generated method stub
 		
 	}
-	public void render(GameContainer g){
+	private Square getClicked(GameContainer gc) {
+		// TODO Auto-generated method stub
+		for(int w=0;w<8;w++)
+		for(int h=0;h<8;h++){
+	
+	Square s=grid[w][h];
+if(s.chosen&&gc.getInput().isMouseButtonDown(Input.MOUSE_LEFT_BUTTON))
+		return s;
+		}
+		return null;
+	}
+
+	public void render(GameContainer gc){
     
 		for(int w=0;w<8;w++)
 			for(int h=0;h<8;h++){//97 is a 98 is b and so on
-		        grid[w][h].render(g);
+		        grid[w][h].render(gc);
 			}
-			}
+		
+		Graphics g=gc.getGraphics();
+		if(getChosen()!=null)
+			
+				g.draw(getChosen());
+			
+	if(getSelection()==null)return;
+			
+				
+				
+				g.setLineWidth(4);
+			g.draw(getSelection());
+			g.resetLineWidth();
+			//System.out.println("square "+getLoc()[0]+" "+getLoc()[1]+" clicked");
+			
+			
+			
+		}
+		
+			
 	/**
 	 * Returns coord values on the board image the given coords represent.
 	 * like a1 would give 50,60
@@ -81,14 +150,23 @@ if(w>7||h>7)return null;
      * gets which square the mouse is in
      * @return the square object
      */
+    Square getSelection(){
+    	
+    	
+	
+    	return selection;
+    }
     Square getChosen(){
     	for(int w=0;w<8;w++)
 			for(int h=0;h<8;h++){//97 is a 98 is b and so on
-		        if(grid[w][h].selected) return grid[w][h];
+		        if(grid[w][h].chosen) return grid[w][h];
 		        
 			}
     	return null;
     	
+    }
+   public Square getSquare(int x,int y){
+    return grid[x][y];	
     }
 	
 	

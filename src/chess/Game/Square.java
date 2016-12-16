@@ -1,5 +1,6 @@
 package chess.Game;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -16,15 +17,19 @@ public class Square extends Rectangle{
 	int y;
 	Board b;
 	Piece p;
+	public boolean chosen;
 	private static final long serialVersionUID = 1L;
 	public boolean selected;
+	private boolean white;
 
-	public Square(int x, int y,Board b) {
+	public Square(int x, int y,Board b, boolean white) {
 		super((float)b.getcoords(x, y)[0],(float)b.getcoords(x, y)[1], b.cellw, b.cellh);
-		selected=true;
+		selected=false;
+		chosen=false;
 		this.x=x;
 		this.y=y;
 		this.b=b;
+		this.white=white;
 		p=null;
 		// TODO Auto-generated constructor stub
 	}
@@ -39,8 +44,8 @@ public class Square extends Rectangle{
 		int[] crds={(int)getX(),(int)getY()};
 		if((mx>crds[0] && mx<crds[0]+getWidth()) && (my>crds[1] && my<crds[1]+getHeight())){
 			//System.out.println("Mouse in "+getLoc()[0]+" "+getLoc()[1]);
-			selected=true;
-		}else selected=false;
+			chosen=true;
+		}else chosen=false;
 	}
 	/**
 	 * Make sure this is called in the render thread. Do not overlap with update
@@ -48,17 +53,17 @@ public class Square extends Rectangle{
 	 */
 	void render(GameContainer gc){
 		Graphics g=gc.getGraphics();
-		if(selected&&gc.getInput().isMouseButtonDown(Input.MOUSE_LEFT_BUTTON)){
-			
-			
-			g.setLineWidth(4);
-		g.draw(this);
-		g.resetLineWidth();
-		//System.out.println("square "+getLoc()[0]+" "+getLoc()[1]+" clicked");
-		}
+		if(white)g.setColor(Color.white);
+		else g.setColor(Color.gray);
+		g.fill(this);
 		
-		else if(selected)
+		if(white){
+			g.setColor(Color.gray);
 			g.draw(this);
+		}
+		g.setColor(Color.black);
+		if(getPiece()!=null)
+		getPiece().render(g);
 		
 	}
 	/**
