@@ -4,7 +4,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 
-import chess.Pieces.TestPiece;
+import chess.Pieces.Pawn;
 
 public class Board {
 	int Widt=64;
@@ -40,8 +40,8 @@ public class Board {
 				
 				
 			}
-	getSquare(5, 5).setPiece(new TestPiece(5, 5, this));
-	getSquare(6, 6).setPiece(new TestPiece(6, 6, this));
+	getSquare(5, 5).setPiece(new Pawn(5, 5, this));
+	getSquare(6, 6).setPiece(new Pawn(6, 6, this));
 	
 	System.out.println("Cell:w/h "+cellw+" "+cellh);
 	
