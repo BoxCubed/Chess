@@ -37,6 +37,13 @@ Pieces pieces;
 			g.fill(new Circle(getSquare().getCenterX(), getSquare().getCenterY(), 10));
 		}
 
+
+		@Override
+		public Pieces getID() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
 	}
 
 
