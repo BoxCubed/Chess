@@ -8,19 +8,14 @@ package chess.Pieces;
 	import chess.enums.Pieces;
 
 	public class Pawn extends Piece {
-
+Pieces pieces;
 		public Pawn(int x, int y, Board b) {
 			super(x, y, b);
-			
+			pieces = Pieces.Pawn;
 			// TODO Auto-generated constructor stub
 		}
 
-		@Override
-		public Pieces getID() {
-			// TODO Auto-generated method stub
-			return Pieces.Bishop;
-		}
-
+		
 		@Override
 		public boolean canMove(int newx, int newy) {
 			// TODO Auto-generated method stub

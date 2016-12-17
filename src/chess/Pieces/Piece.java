@@ -6,6 +6,7 @@ import org.newdawn.slick.Image;
 import chess.Game.Board;
 import chess.Game.Square;
 import chess.enums.Pieces;
+import chess.enums.Players;
 
 public abstract class Piece{
 	
@@ -14,11 +15,11 @@ public abstract class Piece{
 	protected Board b;
 	Image image;
 	
-	Piece(int x,int y,Board b){
+	Piece(int x,int y,Board player){
 		
 		this.x=x;
 		this.y=y;
-		this.b=b;
+		this.b=player;
 	}
 	/**
 	 * Returns what piece this is
