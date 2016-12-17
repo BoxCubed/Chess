@@ -4,7 +4,6 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
 import chess.Game.Board;
-import chess.Game.Deselection_Listener;
 import chess.Game.Square;
 import chess.enums.Pieces;
 import chess.enums.Players;
@@ -15,24 +14,23 @@ public abstract class Piece{
 	int y;
 	protected Board b;
 	Image image;
-//<<<<<<< HEAD
-	private Pieces team;
+	private Players team;
 	
 	Piece(int x,int y,Board player){}
 		
-//=======
+
 	//Pieces team;
-	Piece(int x,int y,Board b,Pieces team){
+	Piece(int x,int y,Board b,Players team){
 		this.team=team;
-//>>>>>>> branch 'master' of https://tejsidhu123@bitbucket.org/boxcubed/chess.git
+
 		this.x=x;
 		this.y=y;
-//<<<<<<< HEAD
+
 		this.b=b;
-//=======
+
 		this.b=b;
 		b.getSquare(x, y).setPiece(this);
-///>>>>>> branch 'master' of https://tejsidhu123@bitbucket.org/boxcubed/chess.git
+
 	}
 	/**
 	 * Returns what piece this is
@@ -90,7 +88,7 @@ public abstract class Piece{
 	 * Gets the Team the piece is in.
 	 * @return white or black
 	 */
-	public Pieces getTeam(){
+	public Players getTeam(){
 		return team;
 	}
 	

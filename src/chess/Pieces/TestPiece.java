@@ -7,6 +7,7 @@ import org.newdawn.slick.geom.Circle;
 import chess.Game.Board;
 import chess.Game.Deselection_Listener;
 import chess.enums.Pieces;
+import chess.enums.Players;
 
 public class TestPiece extends Piece {
 /**
@@ -18,7 +19,7 @@ public class TestPiece extends Piece {
  * @param b
  * @param team
  */
-	public TestPiece(int x, int y, Board b,Pieces team) {
+	public TestPiece(int x, int y, Board b,Players team) {
 		super(x, y, b,team);
 		
 		// TODO Auto-generated constructor stub
@@ -50,7 +51,7 @@ public class TestPiece extends Piece {
 	public void render(Graphics g) {
 		// TODO Auto-generated method stub
 		
-		if(getTeam()==Pieces.White)
+		if(getTeam()==Players.White)
 			g.setColor(Color.orange);
 		else g.setColor(Color.red);
 		g.fill(new Circle(getSquare().getCenterX(), getSquare().getCenterY(), 10));

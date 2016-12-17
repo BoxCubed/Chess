@@ -4,12 +4,9 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 
-//<<<<<<< HEAD
 import chess.Pieces.Pawn;
-//=======
 import chess.Pieces.TestPiece;
-import chess.enums.Pieces;
-//>>>>>>> branch 'master' of https://tejsidhu123@bitbucket.org/boxcubed/chess.git
+import chess.enums.Players;
 
 public class Board {
 	int Widt=64;
@@ -45,16 +42,13 @@ public class Board {
 				
 				
 			}
-//<<<<<<< HEAD
 	getSquare(5, 5).setPiece(new Pawn(5, 5, this));
 	getSquare(6, 6).setPiece(new Pawn(6, 6, this));
 	
-//=======
-	new TestPiece(5, 5, this,Pieces.White);
-	new TestPiece(6, 6, this,Pieces.Black);
-	new TestPiece(7, 7, this,Pieces.White);
-	new TestPiece(1, 1, this,Pieces.Black);
-//>>>>>>> branch 'master' of https://tejsidhu123@bitbucket.org/boxcubed/chess.git
+	new TestPiece(5, 5, this,Players.White);
+	new TestPiece(6, 6, this,Players.Black);
+	new TestPiece(7, 7, this,Players.White);
+	new TestPiece(1, 1, this,Players.Black);
 	System.out.println("Cell:w/h "+cellw+" "+cellh);
 	
 	
