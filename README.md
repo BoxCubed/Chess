@@ -36,3 +36,4 @@ I'll make a jar l8tr when it is presentable
 Aka Ryan or Tej<- he hasn't done shit. p.s he wanted to start this
 **
 # ***GO to facebook and see all my messages u dildo*********** #
+coz silicon valley SOZ
