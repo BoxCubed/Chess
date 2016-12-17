@@ -32,8 +32,11 @@ public class ChessGame extends BasicGame
 		//gc.getGraphics().setBackground(Color.orange);
 		bg=new Image("res/board.png");
 		b=new Board();
+		gc.getInput().addMouseListener(new Deselection_Listener(b));
+	
 		gc.getGraphics().setBackground(Color.white);
 		gc.setShowFPS(false);
+		
 		
 	}
 

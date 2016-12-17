@@ -4,6 +4,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
 import chess.Game.Board;
+import chess.Game.Deselection_Listener;
 import chess.Game.Square;
 import chess.enums.Pieces;
 
@@ -13,12 +14,13 @@ public abstract class Piece{
 	int y;
 	protected Board b;
 	Image image;
-	
-	Piece(int x,int y,Board b){
-		
+	Pieces team;
+	Piece(int x,int y,Board b,Pieces team){
+		this.team=team;
 		this.x=x;
 		this.y=y;
 		this.b=b;
+		b.getSquare(x, y).setPiece(this);
 	}
 	/**
 	 * Returns what piece this is
@@ -62,13 +64,22 @@ public abstract class Piece{
 	 * @param y
 	 */
 	public void move(int x,int y){
+		
 		if(!canMove(x, y))
 			return;
 		getSquare().setPiece(null);
 		this.x=x;
 		this.y=y;
+		
 		getSquare().setPiece(this);
 		
+	}
+	/**
+	 * Gets the Team the piece is in.
+	 * @return white or black
+	 */
+	public Pieces getTeam(){
+		return team;
 	}
 	
 

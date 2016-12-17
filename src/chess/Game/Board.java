@@ -5,6 +5,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 
 import chess.Pieces.TestPiece;
+import chess.enums.Pieces;
 
 public class Board {
 	int Widt=64;
@@ -40,22 +41,28 @@ public class Board {
 				
 				
 			}
-	getSquare(5, 5).setPiece(new TestPiece(5, 5, this));
-	getSquare(6, 6).setPiece(new TestPiece(6, 6, this));
-	
+	new TestPiece(5, 5, this,Pieces.White);
+	new TestPiece(6, 6, this,Pieces.Black);
+	new TestPiece(7, 7, this,Pieces.White);
+	new TestPiece(1, 1, this,Pieces.Black);
 	System.out.println("Cell:w/h "+cellw+" "+cellh);
 	
 	
 	}
 	
 	public void update(GameContainer gc) {
-		if(getClicked(gc)==selection&&selection!=null){selection=null; return;}
-		if(selection!=null&&getClicked(gc)!=null&&selection!=getClicked(gc)&&selection.getPiece()!=null&&selection.getPiece().canMove(getClicked(gc).getLoc()[0], getClicked(gc).getLoc()[1])){
+	//	if(getClicked(gc)==selection&&selection!=null){selection=null; return;}
+		
+		if(selection!=null&&getClicked(gc)!=null
+				&&selection!=getClicked(gc)&&selection.getPiece()!=null
+				&&selection.getPiece().canMove(getClicked(gc).getLoc()[0], getClicked(gc).getLoc()[1])){
 			selection.getPiece().move(getClicked(gc).getLoc()[0],getClicked(gc).getLoc()[1]);
-			System.out.println("Been here");
+			//System.out.println("Been here");
 			selection=null;
 			return;
 		}
+		
+
 		for(int w=0;w<8;w++)
 			for(int h=0;h<8;h++){
 				Square s=grid[w][h];
@@ -147,15 +154,20 @@ if(w>7||h>7)return null;
 		return ret;
 	}
     /**
-     * gets which square the mouse is in
-     * @return the square object
+     * get which square is chosen
+     * @return the chosen one
      */
-    Square getSelection(){
+       Square getSelection(){
     	
     	
 	
     	return selection;
     }
+       /**
+        * gets which square the mouse is in
+        * @return the square object
+        */
+
     Square getChosen(){
     	for(int w=0;w<8;w++)
 			for(int h=0;h<8;h++){//97 is a 98 is b and so on
