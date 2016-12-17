@@ -1,6 +1,6 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+
 
 ### The details ###
 
@@ -15,11 +15,14 @@ Chess in Java. Nothing else to say
 * Summary of set up
 * Configuration
 * Dependencies
+Slick and LWJGL
 * Database configuration
+Clone to eclipse to work on it
 * How to run tests
 * Deployment instructions
+I'll make a jar l8tr when it is presentable
 
-//### Contribution guidelines ###
+### Contribution guidelines ###
 
 * Writing tests
 * Code review
@@ -29,3 +32,4 @@ Chess in Java. Nothing else to say
 
 * Repo owner or admin
 * Other community or team contact
+Aka Ryan or Tej<- he hasn't done shit. p.s he wanted to start this
