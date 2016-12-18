@@ -27,7 +27,7 @@ public class TestPiece extends Piece {
 	@Override
 	public Pieces getID() {
 		// TODO Auto-generated method stub
-		return Pieces.Castle;
+		return Pieces.Rook;
 	}
 
 	@Override
@@ -52,8 +52,7 @@ public class TestPiece extends Piece {
 	
 		
 			Image i=ChessSheet.getPiece(getTeam(), getID());
-		
-		i.draw(getSquare().getX(), getSquare().getY(), 0.195f);
+		i.draw(getSquare().getX(), getSquare().getY(), 0.21f);
 		//g.setColor(Color.black);
 	}
 
