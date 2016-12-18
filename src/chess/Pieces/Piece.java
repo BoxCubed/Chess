@@ -16,7 +16,7 @@ public abstract class Piece{
 	Image image;
 	private Players team;
 	
-	Piece(int x,int y,Board player){}
+	
 		
 
 	//Pieces team;

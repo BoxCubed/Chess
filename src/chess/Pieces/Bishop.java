@@ -2,8 +2,6 @@ package chess.Pieces;
 
 
 
-import javax.sound.sampled.EnumControl.Type;
-
 import org.newdawn.slick.Graphics;
 
 import chess.Game.Board;
@@ -14,8 +12,8 @@ public class Bishop extends Piece{
 
 	Pieces pieces; 
 	
-	Bishop(int x, int y, Board player) {
-		super(x, y, player);
+	Bishop(int x, int y, Board player, Players team) {
+		super(x, y, player,team);
 	pieces = Pieces.Bishop;
 		// TODO Auto-generated constructor stub
 	}

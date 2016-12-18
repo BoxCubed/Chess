@@ -42,8 +42,7 @@ public class Board {
 				
 				
 			}
-	getSquare(5, 5).setPiece(new Pawn(5, 5, this));
-	getSquare(6, 6).setPiece(new Pawn(6, 6, this));
+	new Pawn(5, 4, this,Players.Black);
 	
 	new TestPiece(5, 5, this,Players.White);
 	new TestPiece(6, 6, this,Players.Black);

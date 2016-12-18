@@ -4,11 +4,12 @@ import org.newdawn.slick.Graphics;
 
 import chess.Game.Board;
 import chess.enums.Pieces;
+import chess.enums.Players;
 
 public class Knight extends Piece{
 
-	Knight(int x, int y, Board b) {
-		super(x, y, b);
+	Knight(int x, int y, Board b,Players team) {
+		super(x, y, b,team);
 		// TODO Auto-generated constructor stub
 	}
 

@@ -1,16 +1,17 @@
 package chess.Pieces;
 
 	import org.newdawn.slick.Color;
-	import org.newdawn.slick.Graphics;
-	import org.newdawn.slick.geom.Circle;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.geom.Circle;
 
-	import chess.Game.Board;
-	import chess.enums.Pieces;
+import chess.Game.Board;
+import chess.enums.Pieces;
+import chess.enums.Players;
 
 	public class Pawn extends Piece {
 Pieces pieces;
-		public Pawn(int x, int y, Board b) {
-			super(x, y, b);
+		public Pawn(int x, int y, Board b,Players team) {
+			super(x, y, b,team);
 			pieces = Pieces.Pawn;
 			// TODO Auto-generated constructor stub
 		}
@@ -41,7 +42,7 @@ Pieces pieces;
 		@Override
 		public Pieces getID() {
 			// TODO Auto-generated method stub
-			return null;
+			return pieces;
 		}
 
 	}
