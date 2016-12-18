@@ -1,8 +1,7 @@
 package chess.Pieces;
 
-import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.geom.Circle;
+import org.newdawn.slick.Image;
 
 import chess.Game.Board;
 import chess.Game.Deselection_Listener;
@@ -28,7 +27,7 @@ public class TestPiece extends Piece {
 	@Override
 	public Pieces getID() {
 		// TODO Auto-generated method stub
-		return Pieces.Bishop;
+		return Pieces.Castle;
 	}
 
 	@Override
@@ -50,12 +49,12 @@ public class TestPiece extends Piece {
 	@Override
 	public void render(Graphics g) {
 		// TODO Auto-generated method stub
+	
 		
-		if(getTeam()==Players.White)
-			g.setColor(Color.orange);
-		else g.setColor(Color.red);
-		g.fill(new Circle(getSquare().getCenterX(), getSquare().getCenterY(), 10));
-		g.setColor(Color.black);
+			Image i=ChessSheet.getPiece(getTeam(), getID());
+		
+		i.draw(getSquare().getX(), getSquare().getY(), 0.195f);
+		//g.setColor(Color.black);
 	}
 
 }

@@ -9,6 +9,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
+import chess.Pieces.ChessSheet;
 import chess.enums.State;
 
 public class ChessGame extends BasicGame
@@ -19,6 +20,7 @@ public class ChessGame extends BasicGame
 	Image bg;
 	Scanner i=new Scanner(System.in);
 	Board b;
+	
 	
 	public ChessGame(String gamename)
 	{
@@ -36,6 +38,7 @@ public class ChessGame extends BasicGame
 	
 		gc.getGraphics().setBackground(Color.white);
 		gc.setShowFPS(false);
+		new ChessSheet();
 		
 		
 	}
