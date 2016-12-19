@@ -5,7 +5,9 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 
 import chess.Pieces.Pawn;
+import chess.Pieces.Rook;
 import chess.Pieces.TestPiece;
+import chess.enums.Pieces;
 import chess.enums.Players;
 
 public class Board {
@@ -42,12 +44,34 @@ public class Board {
 				
 				
 			}
-	new Pawn(5, 4, this,Players.Black);
 	
-	new TestPiece(5, 5, this,Players.White);
-	new TestPiece(6, 6, this,Players.Black);
-	new TestPiece(7, 7, this,Players.White);
-	new TestPiece(1, 1, this,Players.Black);
+	for(int i=0;i<=7;i++){
+		new TestPiece(i, 1, this, Players.Black); //This sets the position of the pawns for both players. The int i is the x value that changes 
+		//while the y value stays the same because they are in the same row. 
+	}
+	for(int i=0;i<=7;i++){
+		new TestPiece(i, 6, this, Players.White);
+	}
+	new TestPiece(0,0,this,Players.Black);
+	
+		//Still not an efficient way to place the rooks but it is easier than writing the individual location of 16 pieces
+	/*for(int x=0;x>=7;x+=7){
+		Boolean DoneWhite;
+		do{
+		new TestPiece(x, 7, this, Players.White);
+		if(x==7){
+			DoneWhite=true;
+		}
+		}while(DoneWhite = false);
+		
+		if(DoneWhite==true){
+			x= 0; 
+			new TestPiece(x, 0, this, Players.Black);
+		}
+		
+	}*/
+	
+	//new Pawn(2,2,this,Players.Black);
 	System.out.println("Cell:w/h "+cellw+" "+cellh);
 	
 	

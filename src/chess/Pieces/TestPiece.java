@@ -27,7 +27,7 @@ public class TestPiece extends Piece {
 	@Override
 	public Pieces getID() {
 		// TODO Auto-generated method stub
-		return Pieces.Rook;
+		return Pieces.Queen;
 	}
 
 	@Override

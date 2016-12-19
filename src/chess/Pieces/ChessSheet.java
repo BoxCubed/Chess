@@ -17,7 +17,7 @@ static SpriteSheet white;
 		
 	}
 	protected static Image getPiece(Players t,Pieces p){
-		try{
+		
 		switch(p){
 		case Pawn:
 			if(t==Players.Black){
@@ -65,11 +65,7 @@ static SpriteSheet white;
 		default:	return null;
 		}
 		}
-	catch(Exception e){
-		e.printStackTrace();
-	}
-		return null;
 	}
 	
 
-}
+
