@@ -1,5 +1,7 @@
 package chess.Pieces;
 
+import java.lang.Thread.State;
+
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
@@ -19,7 +21,7 @@ public abstract class Piece{
 	Image image;
 	private Players team;
 	public boolean pulse=false;
-	
+	PiecePulseThread pp;
 		
 
 	//Pieces team;
@@ -30,7 +32,7 @@ public abstract class Piece{
 		this.y=y;
 
 		this.b=b;
-
+        pp=new PiecePulseThread(this);
 		this.b=b;
 		b.getSquare(x, y).setPiece(this);
 		posx=(int) getSquare().getCenterX();
@@ -110,9 +112,13 @@ public abstract class Piece{
 	 */
 	public //int rotation=0;
 	float scale=1.5f;
-	PiecePulseThread pp=new PiecePulseThread(this);
+		
 	protected void renderImage(){
-		if(!pp.isAlive()&&pulse)pp.start();
+		if(pp==null)pp=new PiecePulseThread(this);
+		
+		if(pp.getState()==State.TERMINATED)pp=new PiecePulseThread(this);
+		if(pp.getState()==State.NEW&&pulse)pp.start();
+		
 		Image i=ChessSheet.getPiece(getTeam(), getID()).getScaledCopy(scale);
 		
 		//i.setRotation(rotation);
