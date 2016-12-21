@@ -82,6 +82,7 @@ public abstract class Piece{
 		this.y=y;
 		
 		getSquare().setPiece(this);
+		if(this instanceof Pawn){Pawn p=(Pawn)this;p.moved=true;}
 		
 	}
 	/**
