@@ -92,6 +92,14 @@ public abstract class Piece{
 	public Players getTeam(){
 		return team;
 	}
+	/**
+	 * Renders image of the piece neatly without any alignment needed on your part
+	 */
+	protected void renderImage(){
+		Image i=ChessSheet.getPiece(getTeam(), getID());
+		i.draw(getSquare().getX()+3, getSquare().getY(),1.5f);
+		
+	}
 	
 
 }
