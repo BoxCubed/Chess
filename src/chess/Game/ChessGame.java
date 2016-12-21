@@ -65,9 +65,13 @@ public class ChessGame extends BasicGame
 		g.drawString("x: "+gc.getInput().getMouseX(), gc.getInput().getMouseX()-20, gc.getInput().getMouseY()+10);
 		g.drawString("y: "+gc.getInput().getMouseY(), gc.getInput().getMouseX()-20,gc.getInput().getMouseY()+25);
 		g.drawString("FPS: "+gc.getFPS(), 20, 20);
+		if(getState()==State.BLACK_TURN)g.drawString("Black's Turn", 704/2, 20);	else g.drawString("White's Turn", 704/2, 20);
 		if(b.getChosen()==null) return;
-		g.drawString("In Square: "+(char)(b.getChosen().getLoc()[0]+97)+" "+(b.getChosen().getLoc()[1]+1/*-1+8 used simple graph math to invert numbers so 0 becomes 8, 7 is 1 so on. 
+		g.drawString("In Square: "+(char)(b.getChosen().getLoc()[0]+97)+" "+(b.getChosen().getLoc()[1]+1
+			
+				/*-1+8 used simple graph math to invert numbers so 0 becomes 8, 7 is 1 so on. 
 		equation is y=-x+8*/), 40, 0);
+		
 		
 		
 	

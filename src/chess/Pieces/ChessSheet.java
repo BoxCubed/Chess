@@ -21,10 +21,10 @@ static SpriteSheet white;
 		switch(p){
 		case Pawn:
 			if(t==Players.Black){
-				return black.getSprite(7, 0); 
+				return black.getSprite(5, 0); 
 			}
 			else{
-				return white.getSprite(7, 0);
+				return white.getSprite(5, 0);
 			}
 		case Knight:
 			if(t==Players.Black){ 
@@ -42,10 +42,10 @@ static SpriteSheet white;
 				}
 		case Queen:
 			if(t==Players.Black){ 
-				return black.getSprite(5,0);
+				return black.getSprite(4,0);
 				}
 			else{ 
-				return white.getSprite(5, 0);
+				return white.getSprite(4, 0);
 				}
 		case Bishop:
 			if(t==Players.Black){ 

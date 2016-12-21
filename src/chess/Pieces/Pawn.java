@@ -1,8 +1,7 @@
 package chess.Pieces;
 
-	import org.newdawn.slick.Color;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.geom.Circle;
+	import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 
 import chess.Game.Board;
 import chess.enums.Pieces;
@@ -20,9 +19,11 @@ Pieces pieces;
 		@Override
 		public boolean canMove(int newx, int newy) {
 			// TODO Auto-generated method stub
-			if(b.getSquare(newx, newy).getPiece()==null)
-			return true;
+			if(b.getSquare(newx, newy).getPiece()==null&&newy<=y+2&&!(newy<y)&&newx==x)return true;
+			if(b.getSquare(newx, newy).getPiece()==null)return false;
+			if(b.getSquare(newx, newy).getPiece().getTeam()!=getTeam()&&(newx==x+1||newx==x-1)&&newy==y+1) return true;
 			return false;
+			
 		}
 
 		@Override
@@ -34,8 +35,8 @@ Pieces pieces;
 		@Override
 		public void render(Graphics g) {
 			// TODO Auto-generated method stub
-			g.setColor(Color.orange);
-			g.fill(new Circle(getSquare().getCenterX(), getSquare().getCenterY(), 10));
+			Image i=ChessSheet.getPiece(getTeam(), getID());
+			i.draw(getSquare().getX(), getSquare().getY(), 0.21f);
 		}
 
 

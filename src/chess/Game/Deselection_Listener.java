@@ -3,6 +3,9 @@ package chess.Game;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.MouseListener;
 
+import chess.enums.Players;
+import chess.enums.State;
+
 public class Deselection_Listener implements MouseListener {
 Board b;
 public static boolean deselect=false;
@@ -24,13 +27,7 @@ public static boolean deselect=false;
 		if(b.getSelection()==null)return;
 		if(button!=Input.MOUSE_LEFT_BUTTON)return;
 
-		for(int w=0;w<8;w++)
-			for(int h=0;h<8;h++){//97 is a 98 is b and so on
-		        if(b.getSquare(w, h).selected&&b.getSquare(w, h).contains(x, y)){
-		        	b.getSquare(w, h).selected=false;
-		        	b.selection=null;
-		        }
-			}
+		b.selection=null;
 
 	}
 	@Override
@@ -67,8 +64,32 @@ public static boolean deselect=false;
 	@Override
 	public void mousePressed(int button, int x, int y) {
 		// TODO Auto-generated method stub
-		if(b.selection==null)deselect=false;
-		else deselect=true;
+		Square s=b.getSquare((float)x, (float)y);
+		Players turn;
+		if(s==null)return;
+		if(b.selection==null&&s.getPiece()!=null){deselect=false;b.selection=s;return;}
+		if(b.selection==s){deselect=true; return;}
+		
+		if(ChessGame.getState()==State.WHITE_TURN)turn=Players.White; else turn=Players.Black;
+		
+		if(b.selection!=null&&s!=null&&b.selection!=s&&b.selection.getPiece()!=null
+				&&b.selection.getPiece().canMove(s.getLoc()[0], s.getLoc()[1])&&turn==b.selection.getPiece().getTeam()){
+			b.selection.getPiece().move(s.getLoc()[0],s.getLoc()[1]);
+			deselect=true;
+			if(turn==Players.Black)ChessGame.setState(State.WHITE_TURN);else ChessGame.setState(State.BLACK_TURN);
+		}else if(s.getPiece()!=null){
+			deselect=false;b.selection=s;return;
+		}
+		
+		/*if(selection!=null&&getClicked(gc)!=null
+		&&selection!=getClicked(gc)&&selection.getPiece()!=null
+		&&selection.getPiece().canMove(getClicked(gc).getLoc()[0], getClicked(gc).getLoc()[1])){
+	selection.getPiece().move(getClicked(gc).getLoc()[0],getClicked(gc).getLoc()[1]);
+	//System.out.println("Been here");
+	selection=null;
+	return;
+}*/
+	
 	}
 
 	

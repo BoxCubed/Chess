@@ -4,7 +4,6 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
 import chess.Game.Board;
-import chess.Game.Deselection_Listener;
 import chess.enums.Pieces;
 import chess.enums.Players;
 
@@ -13,6 +12,7 @@ public class TestPiece extends Piece {
  * this piece moves anywhere and can kill anything
  * renders a cirlce for it has no image
  * test purposes only
+ * This piece has a serious toll on the fps of the game due to the game rendering every space it can move too
  * @param x
  * @param y
  * @param b
@@ -36,7 +36,7 @@ public class TestPiece extends Piece {
 		
 		if(b.getSquare(newx, newy).getPiece()==null||b.getSquare(newx, newy).getPiece().getTeam()!=getTeam())
 		return true;
-		Deselection_Listener.deselect=false;
+		//Deselection_Listener.deselect=false;
 		return false;
 	}
 

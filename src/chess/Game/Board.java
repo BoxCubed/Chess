@@ -1,14 +1,15 @@
 package chess.Game;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.geom.Circle;
 
 import chess.Pieces.Pawn;
-import chess.Pieces.Rook;
 import chess.Pieces.TestPiece;
-import chess.enums.Pieces;
 import chess.enums.Players;
+import chess.enums.State;
 
 public class Board {
 	int Widt=64;
@@ -46,7 +47,7 @@ public class Board {
 			}
 	
 	for(int i=0;i<=7;i++){
-		new TestPiece(i, 1, this, Players.Black); //This sets the position of the pawns for both players. The int i is the x value that changes 
+		new Pawn(i, 1, this, Players.Black); //This sets the position of the pawns for both players. The int i is the x value that changes 
 		//while the y value stays the same because they are in the same row. 
 	}
 	for(int i=0;i<=7;i++){
@@ -80,14 +81,14 @@ public class Board {
 	public void update(GameContainer gc) {
 	//	if(getClicked(gc)==selection&&selection!=null){selection=null; return;}
 		
-		if(selection!=null&&getClicked(gc)!=null
+		/*if(selection!=null&&getClicked(gc)!=null
 				&&selection!=getClicked(gc)&&selection.getPiece()!=null
 				&&selection.getPiece().canMove(getClicked(gc).getLoc()[0], getClicked(gc).getLoc()[1])){
 			selection.getPiece().move(getClicked(gc).getLoc()[0],getClicked(gc).getLoc()[1]);
 			//System.out.println("Been here");
 			selection=null;
 			return;
-		}
+		}*/
 		
 
 		for(int w=0;w<8;w++)
@@ -97,7 +98,7 @@ public class Board {
 				
 				grid[w][h].update(gc);
 				if(getClicked(gc)==s){
-					selection=s;
+					//selection=s;
 				s.selected=true;}
 				else {s.selected=false;
 				
@@ -142,6 +143,18 @@ if(s.chosen&&gc.getInput().isMouseButtonDown(Input.MOUSE_LEFT_BUTTON))
 				g.setLineWidth(4);
 			g.draw(getSelection());
 			g.resetLineWidth();
+			Players turn;
+			if(ChessGame.getState()==State.WHITE_TURN)turn=Players.White; else turn=Players.Black;
+			if(getSelection().getPiece()!=null&&getSelection().getPiece().getTeam()==turn){
+				g.setColor(Color.blue);
+				for(int w=0;w<8;w++)
+					for(int h=0;h<8;h++){
+						if(getSelection().getPiece().canMove(w, h))
+							g.fill(new Circle(getSquare(w, h).getCenterX(), getSquare(w, h).getCenterY(), 10));
+						
+					}
+				g.setColor(Color.black);
+			}
 			//System.out.println("square "+getLoc()[0]+" "+getLoc()[1]+" clicked");
 			
 			
@@ -204,9 +217,30 @@ if(w>7||h>7)return null;
     	return null;
     	
     }
+    /**
+     * Gets square using GRID coords like 0,0 0,1 etc
+     * @param x x
+     * @param y y
+     * @return the square that is in that square
+     */
    public Square getSquare(int x,int y){
+	   if(x>7||y>7) return null;
     return grid[x][y];	
     }
+   /**
+    * gets the square that contains the coords given like 50,60 would be square 0,0
+    * @param x
+    * @param y
+    * @return
+    */
+   public Square getSquare(float x,float y){
+	   for(int w=0;w<8;w++)
+			for(int h=0;h<8;h++){
+				if(grid[w][h].contains(x,y)) return grid[w][h];
+			}
+	   return null;
+   }
+   
 	
 	
 }
