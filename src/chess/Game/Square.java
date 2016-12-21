@@ -62,7 +62,10 @@ public class Square extends Rectangle{
 			g.draw(this);
 		}
 		g.setColor(Color.black);
-		
+		if(getPiece()==null)return;
+		if(selected)
+			getPiece().pulse=true;
+		else getPiece().pulse=false;
 		
 	}
 	/**

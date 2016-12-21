@@ -32,6 +32,7 @@ public class ChessGame extends BasicGame
 	@Override
 	public void init(GameContainer gc) throws SlickException {
 		//gc.getGraphics().setBackground(Color.orange);
+		new ChessSheet();
 		bg=new Image("res/board.png");
 		b=new Board();
 		gc.getInput().addMouseListener(new Deselection_Listener(b));
@@ -39,7 +40,7 @@ public class ChessGame extends BasicGame
 		gc.getGraphics().setBackground(Color.white);
 		gc.setShowFPS(false);
 		
-		new ChessSheet();
+		
 		
 		
 	}

@@ -5,17 +5,20 @@ import org.newdawn.slick.Image;
 
 import chess.Game.Board;
 import chess.Game.Square;
+import chess.Pieces.Animation.PieceMoveThread;
+import chess.Pieces.Animation.PiecePulseThread;
 import chess.enums.Pieces;
 import chess.enums.Players;
 
 public abstract class Piece{
 	
 	int x,y;
-	float posx,posy;
+	public float posx;
+	public float posy;
 	protected Board b;
 	Image image;
 	private Players team;
-	
+	public boolean pulse=false;
 	
 		
 
@@ -30,8 +33,8 @@ public abstract class Piece{
 
 		this.b=b;
 		b.getSquare(x, y).setPiece(this);
-		posx=(int) getSquare().getX();
-		posy=(int) getSquare().getY();
+		posx=(int) getSquare().getCenterX();
+		posy=(int) getSquare().getCenterY();
 		
 
 	}
@@ -90,7 +93,7 @@ public abstract class Piece{
 		this.y=y;
 		
 		getSquare().setPiece(this);
-		PieceMoveThread move = new PieceMoveThread(this, getSquare().getX(), getSquare().getY());
+		PieceMoveThread move = new PieceMoveThread(this, getSquare().getCenterX(), getSquare().getCenterY());
 		move.start();
 		if(this instanceof Pawn){Pawn p=(Pawn)this;p.moved=true;}
 		
@@ -105,9 +108,17 @@ public abstract class Piece{
 	/**
 	 * Renders image of the piece neatly without any alignment needed on your part
 	 */
+	public //int rotation=0;
+	float scale=1.5f;
+	PiecePulseThread pp=new PiecePulseThread(this);
 	protected void renderImage(){
-		Image i=ChessSheet.getPiece(getTeam(), getID());
-		i.draw(posx+3, posy,1.5f);
+		if(!pp.isAlive()&&pulse)pp.start();
+		Image i=ChessSheet.getPiece(getTeam(), getID()).getScaledCopy(scale);
+		
+		//i.setRotation(rotation);
+		i.drawCentered(posx, posy);
+		//rotation++;
+		//i.draw(posx, posy,1.5f);
 		
 	}
 	

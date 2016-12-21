@@ -1,4 +1,6 @@
-package chess.Pieces;
+package chess.Pieces.Animation;
+
+import chess.Pieces.Piece;
 
 /**
  * Moves the piece in a transition effect animation
@@ -28,9 +30,9 @@ public class PieceMoveThread extends Thread {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-    		if(p.posx==x){System.out.println("x done");}
+    		if(p.posx==x){}
     		else if(prevx>x)p.posx-=1;else p.posx+=1;
-    		if(p.posy==y){System.out.println("y done");}
+    		if(p.posy==y){}
     		else if(prevy>y)p.posy-=1;else p.posy+=1;
     		
     	}

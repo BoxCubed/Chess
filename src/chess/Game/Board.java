@@ -97,7 +97,7 @@ public class Board {
 				
 				
 				grid[w][h].update(gc);
-				if(getClicked(gc)==s){
+				if(getSelection()==s){
 					//selection=s;
 				s.selected=true;}
 				else {s.selected=false;
@@ -112,6 +112,7 @@ public class Board {
 		// TODO Auto-generated method stub
 		
 	}
+	@SuppressWarnings("unused")
 	private Square getClicked(GameContainer gc) {
 		// TODO Auto-generated method stub
 		for(int w=0;w<8;w++)
