@@ -1,7 +1,6 @@
 package chess.Pieces;
 
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 
 import chess.Game.Board;
 import chess.enums.Pieces;

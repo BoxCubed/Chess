@@ -10,8 +10,8 @@ import chess.enums.Players;
 
 public abstract class Piece{
 	
-	int x;
-	int y;
+	int x,y;
+	float posx,posy;
 	protected Board b;
 	Image image;
 	private Players team;
@@ -30,6 +30,9 @@ public abstract class Piece{
 
 		this.b=b;
 		b.getSquare(x, y).setPiece(this);
+		posx=(int) getSquare().getX();
+		posy=(int) getSquare().getY();
+		
 
 	}
 	/**
@@ -59,6 +62,10 @@ public abstract class Piece{
 	 * @return
 	 */
 	public abstract int[][] getMoveable();
+	/**
+	 * Get where the piece in in format 0,0
+	 * @return loc in an array
+	 */
 	public int[] getPos(){
 		int[] ret={x,y};
 		return ret;
@@ -77,11 +84,14 @@ public abstract class Piece{
 		
 		if(!canMove(x, y))
 			return;
+		
 		getSquare().setPiece(null);
 		this.x=x;
 		this.y=y;
 		
 		getSquare().setPiece(this);
+		PieceMoveThread move = new PieceMoveThread(this, getSquare().getX(), getSquare().getY());
+		move.start();
 		if(this instanceof Pawn){Pawn p=(Pawn)this;p.moved=true;}
 		
 	}
@@ -97,7 +107,7 @@ public abstract class Piece{
 	 */
 	protected void renderImage(){
 		Image i=ChessSheet.getPiece(getTeam(), getID());
-		i.draw(getSquare().getX()+3, getSquare().getY(),1.5f);
+		i.draw(posx+3, posy,1.5f);
 		
 	}
 	

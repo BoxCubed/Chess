@@ -16,7 +16,7 @@ public class ChessGame extends BasicGame
 {
 	private static State state;
 	int count=0;
-	int delta;
+	public static int delta;
 	Image bg;
 	Scanner i=new Scanner(System.in);
 	Board b;

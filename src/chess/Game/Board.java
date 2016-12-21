@@ -125,13 +125,21 @@ if(s.chosen&&gc.getInput().isMouseButtonDown(Input.MOUSE_LEFT_BUTTON))
 	}
 
 	public void render(GameContainer gc){
-    
+		Graphics g=gc.getGraphics();
 		for(int w=0;w<8;w++)
 			for(int h=0;h<8;h++){//97 is a 98 is b and so on
 		        grid[w][h].render(gc);
+		        
+			}
+		for(int w=0;w<8;w++)
+			for(int h=0;h<8;h++){//97 is a 98 is b and so on
+		        //grid[w][h].render(gc);
+		        if(grid[w][h].getPiece()!=null)
+		    		grid[w][h].getPiece().render(g);
+		        
 			}
 		
-		Graphics g=gc.getGraphics();
+		
 		if(getChosen()!=null)
 			
 				g.draw(getChosen());
