@@ -38,6 +38,7 @@ public class ChessGame extends BasicGame
 	
 		gc.getGraphics().setBackground(Color.white);
 		gc.setShowFPS(false);
+		
 		new ChessSheet();
 		
 		
@@ -49,7 +50,7 @@ public class ChessGame extends BasicGame
 		
 	
 		b.update(gc);
-		this.delta=delta;
+		ChessGame.delta=delta;
 		
 		
 		
