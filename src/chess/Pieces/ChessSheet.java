@@ -19,7 +19,7 @@ static PackedSpriteSheet pieces;
 	   
 		
 	}
-	protected static Image getPiece(Players t,Pieces p){
+	public static Image getPiece(Players t,Pieces p){
 		
 		return pieces.getSprite(t.toString().toLowerCase()+p.toString());
 		}

@@ -2,17 +2,17 @@
 package chess.Game;
 import java.util.Scanner;
 
-import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.BasicGameState;
+import org.newdawn.slick.state.StateBasedGame;
 
-import chess.Pieces.ChessSheet;
 import chess.enums.State;
 
-public class ChessGame extends BasicGame
+public class ChessGame extends BasicGameState
 {
 	private static State state;
 	int count=0;
@@ -22,17 +22,17 @@ public class ChessGame extends BasicGame
 	Board b;
 	
 	
-	public ChessGame(String gamename)
+	public ChessGame()
 	{
-		super(gamename);
+		//super(gamename);
 		state=State.WHITE_TURN;
 		//i=new Scanner(System.in);
 	}
 
 	@Override
-	public void init(GameContainer gc) throws SlickException {
+	public void init(GameContainer gc,StateBasedGame game) throws SlickException {
 		//gc.getGraphics().setBackground(Color.orange);
-		new ChessSheet();
+		
 		bg=new Image("res/board.png");
 		b=new Board();
 		gc.getInput().addMouseListener(new Deselection_Listener(b));
@@ -46,7 +46,7 @@ public class ChessGame extends BasicGame
 	}
 
 	@Override
-	public void update(GameContainer gc, int delta) throws SlickException {//delta is time the last update was called. measured in ms 
+	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {//delta is time the last update was called. measured in ms 
 		                                                                   //if called 10 times a second, its 100ms
 		
 	
@@ -58,8 +58,7 @@ public class ChessGame extends BasicGame
 	}
 
 	@Override
-	public void render(GameContainer gc, Graphics g) throws SlickException
-	{ 
+	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		g.setColor(Color.black);
 		
 		//bg.draw(0, 0, gc.getWidth(), gc.getHeight());
@@ -92,5 +91,21 @@ public class ChessGame extends BasicGame
 	public static void setState(State s){
 		state=s;
 		
+	}
+
+	
+	@Override
+	public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+		// TODO Auto-generated method stub
+		super.enter(container, game);
+		container.getGraphics().setBackground(Color.white);
+	}
+	
+	
+
+	@Override
+	public int getID() {
+		// TODO Auto-generated method stub
+		return 1;
 	}
 }

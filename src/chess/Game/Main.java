@@ -11,7 +11,8 @@ public static void main(String[] a){
 	try
 	{
 		AppGameContainer appgc;
-		appgc = new AppGameContainer(new ChessGame("Chess"));
+		//appgc = new AppGameContainer(new ChessGame("Chess"));
+		appgc = new AppGameContainer(new States());
 		appgc.setDisplayMode(705, 720, false);
 		appgc.start();
 		
