@@ -12,7 +12,7 @@ public class Bishop extends Piece{
 
 	Pieces pieces; 
 	
-	Bishop(int x, int y, Board player, Players team) {
+	public Bishop(int x, int y, Board player, Players team) {
 		super(x, y, player,team);
 	pieces = Pieces.Bishop;
 		// TODO Auto-generated constructor stub
@@ -21,7 +21,7 @@ public class Bishop extends Piece{
 	@Override
 	public Pieces getID() {
 		// TODO Auto-generated method stub
-		return null;
+		return Pieces.Bishop;
 	}
 
 	@Override
@@ -39,7 +39,7 @@ public class Bishop extends Piece{
 	@Override
 	public void render(Graphics g) {
 		// TODO Auto-generated method stub
-		
+		renderImage();
 	}
 
 }

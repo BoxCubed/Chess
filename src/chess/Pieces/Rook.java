@@ -40,8 +40,9 @@ public class Rook extends Piece{
 	@Override
 	public void render(Graphics g) {
 		// TODO Auto-generated method stub
-		Image i=ChessSheet.getPiece(getTeam(), getID());
-		i.draw(getSquare().getX(), getSquare().getY(), 0.21f);
+		//Image i=ChessSheet.getPiece(getTeam(), getID());
+		//i.draw(getSquare().getX(), getSquare().getY(), 0.21f);
+		renderImage();
 	}
 
 }

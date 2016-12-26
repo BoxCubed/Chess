@@ -6,7 +6,12 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.geom.Circle;
 
+import chess.Pieces.Bishop;
+import chess.Pieces.King;
+import chess.Pieces.Knight;
 import chess.Pieces.Pawn;
+import chess.Pieces.Queen;
+import chess.Pieces.Rook;
 import chess.Pieces.TestPiece;
 import chess.enums.Players;
 import chess.enums.State;
@@ -53,6 +58,25 @@ public class Board {
 	for(int i=0;i<=7;i++){
 		new Pawn(i, 6, this, Players.White);
 	}
+	
+	new Rook(0, 0, this, Players.Black);
+	new Rook(7,0, this, Players.Black);
+	new Knight(1,0,this,Players.Black);
+	new Knight(6,0,this,Players.Black);
+	new Bishop(5,0,this,Players.Black);
+	new Bishop(2,0,this,Players.Black);
+	new King(3,0,this, Players.Black);
+	new Queen(4,0,this,Players.Black);
+	
+	new Rook(0, 7, this, Players.White);
+	new Rook(7,7, this, Players.White);
+	new Knight(1,7,this,Players.White);
+	new Knight(6,7,this,Players.White);
+	new Bishop(5,7,this,Players.White);
+	new Bishop(2,7,this,Players.White);
+	new King(3,7,this, Players.White);
+	new Queen(4,7,this,Players.White);
+	
 	
 	
 		//Still not an efficient way to place the rooks but it is easier than writing the individual location of 16 pieces

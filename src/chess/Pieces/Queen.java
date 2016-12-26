@@ -8,7 +8,7 @@ import chess.enums.Players;
 
 public class Queen extends Piece {
 
-	Queen(int x, int y, Board b,Players team) {
+	public Queen(int x, int y, Board b,Players team) {
 		super(x, y, b,team);
 		// TODO Auto-generated constructor stub
 	}
@@ -16,7 +16,7 @@ public class Queen extends Piece {
 	@Override
 	public Pieces getID() {
 		// TODO Auto-generated method stub
-		return null;
+		return Pieces.Queen;
 	}
 
 	@Override
@@ -34,7 +34,7 @@ public class Queen extends Piece {
 	@Override
 	public void render(Graphics g) {
 		// TODO Auto-generated method stub
-		
+		renderImage();
 	}
 
 }
