@@ -19,7 +19,7 @@ public class PiecePulseThread extends Thread {
 				e.printStackTrace();
 			}
     		if(p.scale>=1.7f)up=false;
-    		if(p.scale<=1.2f)up=true;
+    		if(p.scale<=1.5f)up=true;
     		if(up)p.scale+=0.1;
     		else p.scale-=0.1;
     		

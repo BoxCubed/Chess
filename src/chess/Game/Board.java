@@ -51,9 +51,9 @@ public class Board {
 		//while the y value stays the same because they are in the same row. 
 	}
 	for(int i=0;i<=7;i++){
-		new TestPiece(i, 6, this, Players.White);
+		new Pawn(i, 6, this, Players.White);
 	}
-	new TestPiece(0,0,this,Players.Black);
+	
 	
 		//Still not an efficient way to place the rooks but it is easier than writing the individual location of 16 pieces
 	/*for(int x=0;x>=7;x+=7){
