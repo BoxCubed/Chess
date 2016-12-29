@@ -13,7 +13,9 @@ public static void main(String[] a){
 	{
 		AppGameContainer appgc;
 		//appgc = new AppGameContainer(new ChessGame("Chess"));
+
 		ScalableGame s=new ScalableGame(new States(), 705, 720,false);
+
 		appgc = new AppGameContainer(s);
 		appgc.setDisplayMode(705, 720, false);
 		appgc.start();
