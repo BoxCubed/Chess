@@ -2,8 +2,6 @@ package chess.Pieces;
 
 
 
-import org.newdawn.slick.Graphics;
-
 import chess.Game.Board;
 import chess.enums.Pieces;
 import chess.enums.Players;
@@ -30,16 +28,5 @@ public class Bishop extends Piece{
 		return false;
 	}
 
-	@Override
-	public int[][] getMoveable() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void render(Graphics g) {
-		// TODO Auto-generated method stub
-		renderImage();
-	}
-
+	
 }

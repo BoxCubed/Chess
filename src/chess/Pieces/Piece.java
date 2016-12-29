@@ -60,13 +60,7 @@ public abstract class Piece{
 	 */
 	
 	public abstract boolean canMove(int newx,int newy);
-	/**
-	 * gets all spaces that the piece can move too
-	 * will be in format example {{1,2},{3,4},{5,6}}
-	 * array size {@code int[x][2]}
-	 * @return
-	 */
-	public abstract int[][] getMoveable();
+
 	/**
 	 * Get where the piece in in format 0,0
 	 * @return loc in an array
@@ -79,7 +73,7 @@ public abstract class Piece{
 	 * Call from square to render piece
 	 * @param g
 	 */
-	public abstract void render(Graphics g);
+	public void render(Graphics g){renderImage();};
 	/**
 	 * Moves piece to new location. Will not move and will return if told to move illegally 
 	 * @param x

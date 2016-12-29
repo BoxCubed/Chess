@@ -1,8 +1,5 @@
 package chess.Pieces;
 
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
-
 import chess.Game.Board;
 import chess.Game.Deselection_Listener;
 import chess.enums.Pieces;
@@ -30,19 +27,8 @@ public class Rook extends Piece{
 			return false;
 	}
 
-	@Override
-	public int[][] getMoveable() {
-		// TODO Auto-generated method stub
-		//int [][] moves = {{},{}};
-		return null;
-	}
+	
 
-	@Override
-	public void render(Graphics g) {
-		// TODO Auto-generated method stub
-		//Image i=ChessSheet.getPiece(getTeam(), getID());
-		//i.draw(getSquare().getX(), getSquare().getY(), 0.21f);
-		renderImage();
-	}
+	
 
 }
