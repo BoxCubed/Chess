@@ -19,11 +19,16 @@ protected boolean moved=false;
 		@Override
 		public boolean canMove(int newx, int newy) {
 			// TODO Auto-generated method stub
-			
+			if(getTeam()==Players.Black){
 			if(b.getSquare(newx, newy).getPiece()==null&&newy<=y+2&&!(newy<y)&&newx==x)if(moved&&newy==y+2)return false;else return true;
 			if(b.getSquare(newx, newy).getPiece()==null)return false;
 			if(b.getSquare(newx, newy).getPiece().getTeam()!=getTeam()&&(newx==x+1||newx==x-1)&&newy==y+1) return true;
-			return false;
+			return false;}else{
+				if(b.getSquare(newx, newy).getPiece()==null&&newy>=y-2&&!(newy>y)&&newx==x)if(moved&&newy==y-2)return false;else return true;
+				if(b.getSquare(newx, newy).getPiece()==null)return false;
+				if(b.getSquare(newx, newy).getPiece().getTeam()!=getTeam()&&(newx==x+1||newx==x-1)&&newy==y-1) return true;
+				return false;
+			}
 			
 		}
 
