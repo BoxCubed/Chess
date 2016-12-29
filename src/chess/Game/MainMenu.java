@@ -30,8 +30,8 @@ Font cf=new Font("Verdana", Font.BOLD, 40);
 	@Override
 	public void init(GameContainer gc, StateBasedGame game) throws SlickException {
 		// TODO Auto-generated method stub
-		gc.getGraphics().setBackground(Color.darkGray);
-		start=new MenuButton("Click to start", f, cf, gc.getWidth()/2-50, gc.getHeight()/2, new MenuListener() {
+		gc.getGraphics().setBackground(Color.gray);
+		start=new MenuButton("Click to start", f, cf, 720/2-50, 705/2, new MenuListener() {
 			
 			@Override
 			public void rightclicked(MenuButton m) {
@@ -61,16 +61,23 @@ Font cf=new Font("Verdana", Font.BOLD, 40);
 	}
 	@Override
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
+		gc.getGraphics().setBackground(Color.gray);
 		// TODO Auto-generated method stub
 		 if(elapsedtime >= 1000) { //simple delta timer
 			elapsedtime=0;
-			p.add(new MenuPiece(rand.nextInt(gc.getWidth()), -50));
+			p.add(new MenuPiece(rand.nextInt(720), -50));
 			 } else elapsedtime += delta;  
 		 for(MenuPiece mp:p){
 			 mp.update(delta);
 		 }
 		 if(gc.getInput().isKeyPressed(Input.KEY_ENTER)){
 			 game.enterState(1);
+		 }
+		 if(gc.getInput().isKeyPressed(Input.KEY_EQUALS)){
+			 Main.setResolution((int)(gc.getWidth()*1.1),(int)( gc.getHeight()*1.1), false);
+		 }
+		 if(gc.getInput().isKeyPressed(Input.KEY_MINUS)){
+			 Main.setResolution((int)(gc.getWidth()/1.1),(int)( gc.getHeight()/1.1), false);
 		 }
 		start.update(gc);
 	}

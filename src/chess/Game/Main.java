@@ -8,10 +8,11 @@ import org.newdawn.slick.ScalableGame;
 import org.newdawn.slick.SlickException;
 
 public class Main {
+	private static AppGameContainer appgc;
 public static void main(String[] a){
 	try
 	{
-		AppGameContainer appgc;
+		
 		//appgc = new AppGameContainer(new ChessGame("Chess"));
 
 		ScalableGame s=new ScalableGame(new States(), 705, 720,false);
@@ -27,5 +28,12 @@ public static void main(String[] a){
 		Logger.getLogger(ChessGame.class.getName()).log(Level.SEVERE, null, ex);
 	}
 }
+public static void setResolution(int width, int height, boolean isFullScreen) {
+    try {
+       appgc.setDisplayMode(width, height, isFullScreen);
+    } catch (SlickException e) {
+       e.printStackTrace();
+    }
+ }
 }
 
