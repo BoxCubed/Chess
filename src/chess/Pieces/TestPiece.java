@@ -39,11 +39,6 @@ public class TestPiece extends Piece {
 		return false;
 	}
 
-	@Override
-	public int[][] getMoveable() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public void render(Graphics g) {
