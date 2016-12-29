@@ -4,6 +4,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.newdawn.slick.AppGameContainer;
+import org.newdawn.slick.ScalableGame;
 import org.newdawn.slick.SlickException;
 
 public class Main {
@@ -12,9 +13,11 @@ public static void main(String[] a){
 	{
 		AppGameContainer appgc;
 		//appgc = new AppGameContainer(new ChessGame("Chess"));
-		appgc = new AppGameContainer(new States());
+		ScalableGame s=new ScalableGame(new States(), 705, 720,true);
+		appgc = new AppGameContainer(s);
 		appgc.setDisplayMode(705, 720, false);
 		appgc.start();
+	    
 		
 	}
 	catch (SlickException ex)
