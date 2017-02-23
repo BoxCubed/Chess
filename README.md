@@ -5,7 +5,10 @@
 ### The details ###
 
 * Quick summary
-Chess in Java. Nothing else to say
+Chess in Java. Nothing else to say 
+development has currently stopped on this due to more important projects under way. The framework is set 
+for the pieces and you are welcome to create a pull request to complete any piece logic. 
+ 
 * Version
 1.0
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
